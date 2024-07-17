@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cache.practice.model.User;
@@ -40,6 +41,12 @@ public class UserController {
 	@GetMapping
 	public List<User> getUsers() {
 		return userService.getUsers();
+	}
+	
+	@DeleteMapping("/flush-cache")
+	public String flushCache(@RequestParam("cacheName") String name) {
+		userService.flushCache(name);
+		return "SUCCESS";
 	}
 	
 }

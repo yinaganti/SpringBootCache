@@ -13,4 +13,6 @@ public interface UserService {
 	void deleteUser(Integer id);
 	
 	List<User> getUsers();
+	
+	void flushCache(String name);
 }

@@ -58,4 +58,10 @@ public class UserServiceImpl implements UserService {
 		System.out.println("all users method");
 		return map.values().stream().collect(Collectors.toList());
 	}
+
+	@Override
+	@CacheEvict(cacheResolver = "customCaheResolver", allEntries = true)
+	public void flushCache(String name) {
+		System.out.println("flush cache method");
+	}
 }
